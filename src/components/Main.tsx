@@ -8,7 +8,7 @@ type Props = {
 };
 
 const Timer = ({ expiryTimestamp }: Props) => {
-  const { seconds, minutes, hours, days, isRunning } = useTimer({
+  const { seconds, minutes, hours, days, isRunning, start, pause, resume, restart } = useTimer({
     expiryTimestamp,
     onExpire: () => console.warn("onExpire called"),
   });
@@ -19,7 +19,12 @@ const Timer = ({ expiryTimestamp }: Props) => {
         {days}:{hours}:{minutes}:{seconds}
       </Text>
       <Text textAlign={"center"}>{isRunning ? "Running" : "Not running"}</Text>
-      <ActionSelectButton expiryTimestamp={expiryTimestamp}></ActionSelectButton>
+      <ActionSelectButton
+        start={start}
+        pause={pause}
+        resume={resume}
+        restart={restart}
+      ></ActionSelectButton>
     </>
   );
 };

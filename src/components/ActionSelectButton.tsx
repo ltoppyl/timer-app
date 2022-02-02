@@ -1,18 +1,15 @@
 import React from "react";
 import { Button, HStack } from "@chakra-ui/react";
-import { useTimer } from "react-timer-hook";
 import SettingTime from "./SettingTime";
 
 type Props = {
-  expiryTimestamp: Date;
+  start: () => void;
+  pause: () => void;
+  resume: () => void;
+  restart: (newExpiryTimestamp: Date, autoStart?: boolean | undefined) => void;
 };
 
-const ActionSelectButton = ({ expiryTimestamp }: Props) => {
-  const { start, pause, resume, restart } = useTimer({
-    expiryTimestamp,
-    onExpire: () => console.warn("onExpire called"),
-  });
-
+const ActionSelectButton = ({ start, pause, resume, restart }: Props) => {
   return (
     <HStack justifyContent={"center"}>
       <Button colorScheme="black" variant="outline" onClick={start}>
