@@ -2,20 +2,47 @@ import React from "react";
 import { IconButton, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { TimeIcon } from "@chakra-ui/icons";
 
-const SettingTime = () => {
+type Props = { setSettingTime: React.Dispatch<React.SetStateAction<number>> };
+
+const SettingTime = ({ setSettingTime }: Props) => {
   return (
     <Menu>
       <MenuButton
         as={IconButton}
         icon={<TimeIcon />}
-        variant="outline"
+        variant="ghost"
+        colorScheme="ghost"
         _focus={{ boxShadow: "none" }}
       />
       <MenuList>
-        <MenuItem>1:00</MenuItem>
-        <MenuItem>3:00</MenuItem>
-        <MenuItem>5:00</MenuItem>
-        <MenuItem>10:00</MenuItem>
+        <MenuItem
+          onClick={() => {
+            setSettingTime(60);
+          }}
+        >
+          1:00
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            setSettingTime(180);
+          }}
+        >
+          3:00
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            setSettingTime(300);
+          }}
+        >
+          5:00
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            setSettingTime(600);
+          }}
+        >
+          10:00
+        </MenuItem>
       </MenuList>
     </Menu>
   );

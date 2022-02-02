@@ -7,9 +7,18 @@ type Props = {
   pause: () => void;
   resume: () => void;
   restart: (newExpiryTimestamp: Date, autoStart?: boolean | undefined) => void;
+  settingTime: number;
+  setSettingTime: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const ActionSelectButton = ({ start, pause, resume, restart }: Props) => {
+const ActionSelectButton = ({
+  start,
+  pause,
+  resume,
+  restart,
+  settingTime,
+  setSettingTime,
+}: Props) => {
   return (
     <HStack justifyContent={"center"}>
       <Button colorScheme="black" variant="outline" onClick={start}>
@@ -26,13 +35,13 @@ const ActionSelectButton = ({ start, pause, resume, restart }: Props) => {
         variant="outline"
         onClick={() => {
           const time = new Date();
-          time.setSeconds(time.getSeconds() + 300);
+          time.setSeconds(time.getSeconds() + settingTime);
           restart(time);
         }}
       >
         Restart
       </Button>
-      <SettingTime />
+      <SettingTime setSettingTime={setSettingTime} />
     </HStack>
   );
 };

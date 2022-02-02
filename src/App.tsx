@@ -1,14 +1,15 @@
 import { Container } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import Main from "./components/Main";
 
 function App() {
   const time = new Date();
-  time.setSeconds(time.getSeconds() + 0);
+  const [settingTime, setSettingTime] = useState<number>(0);
+  time.setSeconds(time.getSeconds() + settingTime);
 
   return (
     <Container maxW="container.sm">
-      <Main expiryTimestamp={time} />
+      <Main settingTime={settingTime} setSettingTime={setSettingTime} expiryTimestamp={time} />
     </Container>
   );
 }

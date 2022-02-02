@@ -4,10 +4,12 @@ import { useTimer } from "react-timer-hook";
 import ActionSelectButton from "./ActionSelectButton";
 
 type Props = {
+  settingTime: number;
+  setSettingTime: React.Dispatch<React.SetStateAction<number>>;
   expiryTimestamp: Date;
 };
 
-const Timer = ({ expiryTimestamp }: Props) => {
+const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
   const { seconds, minutes, hours, days, isRunning, start, pause, resume, restart } = useTimer({
     expiryTimestamp,
     onExpire: () => console.warn("onExpire called"),
@@ -24,6 +26,8 @@ const Timer = ({ expiryTimestamp }: Props) => {
         pause={pause}
         resume={resume}
         restart={restart}
+        settingTime={settingTime}
+        setSettingTime={setSettingTime}
       ></ActionSelectButton>
     </>
   );
