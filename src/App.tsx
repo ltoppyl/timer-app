@@ -1,9 +1,5 @@
-import { Container /*, HStack*/ } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
 import React from "react";
-
-// import Time from "./components/Time";
-// import StartStopButton from "./components/StartStopButton";
-// import SettingTime from "./components/SettingTime";
 import Main from "./components/Main";
 
 function App() {
