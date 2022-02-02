@@ -4,7 +4,7 @@ import React from "react";
 // import Time from "./components/Time";
 // import StartStopButton from "./components/StartStopButton";
 // import SettingTime from "./components/SettingTime";
-import Timer from "./components/Timer";
+import Main from "./components/Main";
 
 function App() {
   const time = new Date();
@@ -12,7 +12,7 @@ function App() {
 
   return (
     <Container maxW="container.sm">
-      <Timer expiryTimestamp={time} />
+      <Main expiryTimestamp={time} />
     </Container>
   );
 }

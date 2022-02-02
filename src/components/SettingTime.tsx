@@ -8,7 +8,6 @@ const SettingTime = () => {
       <MenuButton
         as={IconButton}
         icon={<TimeIcon />}
-        color="black"
         variant="outline"
         _focus={{ boxShadow: "none" }}
       />

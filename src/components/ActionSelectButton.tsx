@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, HStack } from "@chakra-ui/react";
 import { useTimer } from "react-timer-hook";
+import SettingTime from "./SettingTime";
 
 type Props = {
   expiryTimestamp: Date;
@@ -34,6 +35,7 @@ const ActionSelectButton = ({ expiryTimestamp }: Props) => {
       >
         Restart
       </Button>
+      <SettingTime />
     </HStack>
   );
 };
