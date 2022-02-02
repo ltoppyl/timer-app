@@ -1,4 +1,5 @@
 import React from "react";
+import { Container, Text } from "@chakra-ui/react";
 import { useTimer } from "react-timer-hook";
 import ActionSelectButton from "./ActionSelectButton";
 
@@ -13,13 +14,13 @@ const Timer = ({ expiryTimestamp }: Props) => {
   });
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <div style={{ fontSize: "100px" }}>
-        <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
-      </div>
-      <p>{isRunning ? "Running" : "Not running"}</p>
+    <Container maxW="container.sm">
+      <Text textAlign={"center"} fontSize={100}>
+        {days}:{hours}:{minutes}:{seconds}
+      </Text>
+      <Text textAlign={"center"}>{isRunning ? "Running" : "Not running"}</Text>
       <ActionSelectButton expiryTimestamp={expiryTimestamp}></ActionSelectButton>
-    </div>
+    </Container>
   );
 };
 export default Timer;
