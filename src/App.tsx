@@ -1,14 +1,12 @@
-import { Box, Container, Text } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
 import React from "react";
+
+import Time from "./components/Time";
 
 function App() {
   return (
     <Container maxW="container.sm">
-      <Box pt={12} pb={9} bg="blue.100">
-        <Text fontFamily="Bold" fontSize={36} textAlign={"center"}>
-          10:00
-        </Text>
-      </Box>
+      <Time />
     </Container>
   );
 }
