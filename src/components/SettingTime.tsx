@@ -43,6 +43,13 @@ const SettingTime = ({ setSettingTime }: Props) => {
         >
           60:00
         </MenuItem>
+        <MenuItem
+          onClick={() => {
+            setSettingTime(3600);
+          }}
+        >
+          任意の時間
+        </MenuItem>
       </MenuList>
     </Menu>
   );
