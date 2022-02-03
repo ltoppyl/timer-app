@@ -21,6 +21,16 @@ type Props = { setSettingTime: Dispatch<SetStateAction<number>> };
 const SettingTime = ({ setSettingTime }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => setIsOpen(false);
+  const [inputTimeValue, setInputTimeValue] = useState<number>(0);
+
+  const inputTime = () => {
+    setSettingTime(inputTimeValue);
+    onClose();
+  };
+
+  const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputTimeValue(Number(event.target.value));
+  };
 
   return (
     <Menu>
@@ -74,11 +84,11 @@ const SettingTime = ({ setSettingTime }: Props) => {
                 Input Time
               </AlertDialogHeader>
               <AlertDialogBody>
-                <Input placeholder="Time" />
+                <Input placeholder="Time" onChange={handleChangeInput} />
               </AlertDialogBody>
               <AlertDialogFooter>
                 <Button onClick={onClose}>Cancel</Button>
-                <Button colorScheme="blue" onClick={onClose} ml={3}>
+                <Button colorScheme="blue" onClick={inputTime} ml={3}>
                   ENTER
                 </Button>
               </AlertDialogFooter>
