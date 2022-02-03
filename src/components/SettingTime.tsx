@@ -21,7 +21,6 @@ type Props = { setSettingTime: Dispatch<SetStateAction<number>> };
 const SettingTime = ({ setSettingTime }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => setIsOpen(false);
-  const cancelRef = useRef();
 
   return (
     <Menu>
