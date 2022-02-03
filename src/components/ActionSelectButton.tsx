@@ -21,15 +21,6 @@ const ActionSelectButton = ({
 }: Props) => {
   return (
     <HStack justifyContent={"center"}>
-      <Button colorScheme="black" variant="outline" onClick={start}>
-        Start
-      </Button>
-      <Button colorScheme="black" variant="outline" onClick={pause}>
-        Pause
-      </Button>
-      <Button colorScheme="black" variant="outline" onClick={resume}>
-        Resume
-      </Button>
       <Button
         colorScheme="black"
         variant="outline"
@@ -39,7 +30,13 @@ const ActionSelectButton = ({
           restart(time);
         }}
       >
-        Restart
+        Start
+      </Button>
+      <Button colorScheme="black" variant="outline" onClick={pause}>
+        Pause
+      </Button>
+      <Button colorScheme="black" variant="outline" onClick={resume}>
+        Resume
       </Button>
       <SettingTime setSettingTime={setSettingTime} />
     </HStack>
