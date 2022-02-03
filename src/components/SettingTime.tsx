@@ -13,6 +13,7 @@ import {
   AlertDialogOverlay,
   Input,
   Button,
+  HStack,
 } from "@chakra-ui/react";
 import { TimeIcon } from "@chakra-ui/icons";
 
@@ -21,15 +22,32 @@ type Props = { setSettingTime: Dispatch<SetStateAction<number>> };
 const SettingTime = ({ setSettingTime }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => setIsOpen(false);
-  const [inputTimeValue, setInputTimeValue] = useState<number>(0);
+  const [inputTimeValueDay, setInputTimeValueDay] = useState<number>(0);
+  const [inputTimeValueHour, setInputTimeValueHour] = useState<number>(0);
+  const [inputTimeValueMinute, setInputTimeValueMinute] = useState<number>(0);
+  const [inputTimeValueSecond, setInputTimeValueSecond] = useState<number>(0);
 
   const inputAnyTime = () => {
+    const inputTimeValue =
+      86400 * inputTimeValueDay +
+      3600 * inputTimeValueHour +
+      60 * inputTimeValueMinute +
+      inputTimeValueSecond;
     setSettingTime(inputTimeValue);
     onClose();
   };
 
-  const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputTimeValue(Number(event.target.value));
+  const handleChangeInputDay = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputTimeValueDay(Number(event.target.value));
+  };
+  const handleChangeInputHour = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputTimeValueHour(Number(event.target.value));
+  };
+  const handleChangeInputMinute = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputTimeValueMinute(Number(event.target.value));
+  };
+  const handleChangeInputSecond = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputTimeValueSecond(Number(event.target.value));
   };
 
   return (
@@ -81,10 +99,15 @@ const SettingTime = ({ setSettingTime }: Props) => {
           <AlertDialogOverlay>
             <AlertDialogContent>
               <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                Input Time
+                任意の時間を入力してください
               </AlertDialogHeader>
               <AlertDialogBody>
-                <Input placeholder="Time" onChange={handleChangeInput} />
+                <HStack>
+                  <Input placeholder="day" onChange={handleChangeInputDay} />
+                  <Input placeholder="hour" onChange={handleChangeInputHour} />
+                  <Input placeholder="minute" onChange={handleChangeInputMinute} />
+                  <Input placeholder="second" onChange={handleChangeInputSecond} />
+                </HStack>
               </AlertDialogBody>
               <AlertDialogFooter>
                 <Button onClick={onClose}>Cancel</Button>
