@@ -14,6 +14,11 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
     expiryTimestamp,
     onExpire: () => console.warn("onExpire called"),
   });
+  const displayDay = Math.floor(settingTime / 86400);
+  const displayHour = Math.floor((settingTime - displayDay * 86400) / 3600);
+  const displayMinute = Math.floor((settingTime - (displayDay * 86400 + displayHour * 3600)) / 60);
+  const displaySecond =
+    settingTime - (displayDay * 86400 + displayHour * 3600 + displayMinute * 60);
 
   return (
     <>
@@ -35,7 +40,12 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
           s
         </Text>
       </HStack>
-      <Text textAlign={"center"}>{isRunning ? "Running" : "Not running"}</Text>
+      <HStack justifyContent={"center"}>
+        <Text textAlign={"center"}>【{isRunning ? "Running" : "Not running"}】</Text>
+        <Text textAlign={"center"}>
+          設定時間：{displayDay}d {displayHour}h {displayMinute}m {displaySecond}s
+        </Text>
+      </HStack>
       <ActionSelectButton
         start={start}
         pause={pause}
