@@ -23,7 +23,7 @@ const SettingTime = ({ setSettingTime }: Props) => {
   const onClose = () => setIsOpen(false);
   const [inputTimeValue, setInputTimeValue] = useState<number>(0);
 
-  const inputTime = () => {
+  const inputAnyTime = () => {
     setSettingTime(inputTimeValue);
     onClose();
   };
@@ -88,7 +88,7 @@ const SettingTime = ({ setSettingTime }: Props) => {
               </AlertDialogBody>
               <AlertDialogFooter>
                 <Button onClick={onClose}>Cancel</Button>
-                <Button colorScheme="blue" onClick={inputTime} ml={3}>
+                <Button colorScheme="blue" onClick={inputAnyTime} ml={3}>
                   ENTER
                 </Button>
               </AlertDialogFooter>
