@@ -25,7 +25,7 @@ type Props = {
 const MenuFunction = ({ setSelectLanguage }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => setIsOpen(false);
-  let _selectLanguage = "";
+  let _selectLanguage = "Japanese";
 
   const RadioChange = (e: ChangeEvent<HTMLInputElement>) => {
     _selectLanguage = e.target.value;
