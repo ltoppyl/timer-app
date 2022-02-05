@@ -34,10 +34,21 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
         selectLanguage={selectLanguage}
       />
       <HStack justifyContent={"center"}>
-        <Text textAlign={"center"}>【{isRunning ? "Running" : "Not running"}】</Text>
-        <Text textAlign={"center"}>
-          設定時間：{displayDay}d {displayHour}h {displayMinute}m {displaySecond}s
-        </Text>
+        {selectLanguage === "English" ? (
+          <>
+            <Text textAlign={"center"}>【{isRunning ? "Running" : "Not running"}】</Text>
+            <Text textAlign={"center"}>
+              Setting Time：{displayDay}d {displayHour}h {displayMinute}m {displaySecond}s
+            </Text>
+          </>
+        ) : (
+          <>
+            <Text textAlign={"center"}>【{isRunning ? "動作中" : "停止中"}】</Text>
+            <Text textAlign={"center"}>
+              設定時間：{displayDay}日 {displayHour}時 {displayMinute}分 {displaySecond}秒
+            </Text>
+          </>
+        )}
       </HStack>
       <HStack justifyContent={"center"}>
         <ActionSelectButton
@@ -47,6 +58,7 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
           restart={restart}
           settingTime={settingTime}
           setSettingTime={setSettingTime}
+          selectLanguage={selectLanguage}
         ></ActionSelectButton>
         <SettingTime setSettingTime={setSettingTime} />
         <MenuFunction setSelectLanguage={setSelectLanguage} />
