@@ -9,10 +9,6 @@ type Props = {
 };
 
 const DisplayTime = ({ days, hours, minutes, seconds }: Props) => {
-  console.log("d:", days);
-  console.log("h:", hours);
-  console.log("m:", minutes);
-  console.log("s:", seconds);
   let upperLimitUnits = "";
 
   if (days === 0 && hours === 0 && minutes === 0) {
@@ -30,7 +26,6 @@ const DisplayTime = ({ days, hours, minutes, seconds }: Props) => {
   if (days !== 0) {
     upperLimitUnits = "day";
   }
-  console.log("単位上限: ", upperLimitUnits);
 
   return (
     <HStack justifyContent={"center"}>
