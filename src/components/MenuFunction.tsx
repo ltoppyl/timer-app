@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import {
   IconButton,
   MenuButton,
@@ -18,9 +18,19 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
-const MenuFunction = () => {
+type Props = {
+  setSelectLanguage: Dispatch<SetStateAction<string>>;
+};
+
+const MenuFunction = ({ setSelectLanguage }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => setIsOpen(false);
+  let _selectLanguage = "";
+
+  const RadioChange = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+    _selectLanguage = e.target.value;
+  };
 
   return (
     <Menu>
@@ -48,10 +58,10 @@ const MenuFunction = () => {
               <AlertDialogBody>
                 <RadioGroup>
                   <Stack spacing={5} direction="row">
-                    <Radio colorScheme="red" value="1">
+                    <Radio colorScheme="red" value="Japanese" onChange={(e) => RadioChange(e)}>
                       日本語
                     </Radio>
-                    <Radio colorScheme="blue" value="2">
+                    <Radio colorScheme="blue" value="English" onChange={(e) => RadioChange(e)}>
                       English
                     </Radio>
                   </Stack>
@@ -59,7 +69,15 @@ const MenuFunction = () => {
               </AlertDialogBody>
               <AlertDialogFooter>
                 <Button onClick={onClose}>Cancel</Button>
-                <Button colorScheme="blue" onClick={onClose} ml={3}>
+                <Button
+                  ml={3}
+                  colorScheme="blue"
+                  onClick={() => {
+                    console.log("Enter");
+                    setSelectLanguage(_selectLanguage);
+                    onClose();
+                  }}
+                >
                   ENTER
                 </Button>
               </AlertDialogFooter>

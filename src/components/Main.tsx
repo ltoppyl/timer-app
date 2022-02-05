@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { HStack, Text } from "@chakra-ui/react";
 import { useTimer } from "react-timer-hook";
 import ActionSelectButton from "./ActionSelectButton";
@@ -17,6 +17,7 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
     expiryTimestamp,
     onExpire: () => console.warn("onExpire called"),
   });
+  const [selectLanguage, setSelectLanguage] = useState<string>("English");
   const displayDay = Math.floor(settingTime / 86400);
   const displayHour = Math.floor((settingTime - displayDay * 86400) / 3600);
   const displayMinute = Math.floor((settingTime - (displayDay * 86400 + displayHour * 3600)) / 60);
@@ -42,7 +43,7 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
           setSettingTime={setSettingTime}
         ></ActionSelectButton>
         <SettingTime setSettingTime={setSettingTime} />
-        <MenuFunction />
+        <MenuFunction setSelectLanguage={setSelectLanguage} />
       </HStack>
     </>
   );
