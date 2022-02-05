@@ -3,6 +3,8 @@ import { HStack, Text } from "@chakra-ui/react";
 import { useTimer } from "react-timer-hook";
 import ActionSelectButton from "./ActionSelectButton";
 import DisplayTime from "./DisplayTime";
+import SettingTime from "./SettingTime";
+import MenuFunction from "./MenuFunction";
 
 type Props = {
   settingTime: number;
@@ -30,14 +32,18 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
           設定時間：{displayDay}d {displayHour}h {displayMinute}m {displaySecond}s
         </Text>
       </HStack>
-      <ActionSelectButton
-        start={start}
-        pause={pause}
-        resume={resume}
-        restart={restart}
-        settingTime={settingTime}
-        setSettingTime={setSettingTime}
-      ></ActionSelectButton>
+      <HStack justifyContent={"center"}>
+        <ActionSelectButton
+          start={start}
+          pause={pause}
+          resume={resume}
+          restart={restart}
+          settingTime={settingTime}
+          setSettingTime={setSettingTime}
+        ></ActionSelectButton>
+        <SettingTime setSettingTime={setSettingTime} />
+        <MenuFunction />
+      </HStack>
     </>
   );
 };
