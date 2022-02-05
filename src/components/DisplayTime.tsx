@@ -28,7 +28,6 @@ const DisplayTime = ({ days, hours, minutes, seconds, selectLanguage }: Props) =
   if (days !== 0) {
     upperLimitUnits = "day";
   }
-  console.log(selectLanguage);
 
   return (
     <HStack justifyContent={"center"}>
