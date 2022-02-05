@@ -26,7 +26,13 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
 
   return (
     <>
-      <DisplayTime days={days} hours={hours} minutes={minutes} seconds={seconds} />
+      <DisplayTime
+        days={days}
+        hours={hours}
+        minutes={minutes}
+        seconds={seconds}
+        selectLanguage={selectLanguage}
+      />
       <HStack justifyContent={"center"}>
         <Text textAlign={"center"}>【{isRunning ? "Running" : "Not running"}】</Text>
         <Text textAlign={"center"}>

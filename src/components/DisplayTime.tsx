@@ -7,9 +7,10 @@ type Props = {
   hours: number;
   minutes: number;
   seconds: number;
+  selectLanguage: string;
 };
 
-const DisplayTime = ({ days, hours, minutes, seconds }: Props) => {
+const DisplayTime = ({ days, hours, minutes, seconds, selectLanguage }: Props) => {
   let upperLimitUnits = "";
 
   if (days === 0 && hours === 0 && minutes === 0) {
@@ -27,34 +28,68 @@ const DisplayTime = ({ days, hours, minutes, seconds }: Props) => {
   if (days !== 0) {
     upperLimitUnits = "day";
   }
+  console.log(selectLanguage);
 
   return (
     <HStack justifyContent={"center"}>
-      {upperLimitUnits === "day" && (
-        <HStack justifyContent={"center"}>
-          <CommonDisplayTime units={days} unitsText={"d"} />
-          <CommonDisplayTime units={hours} unitsText={"h"} />
-          <CommonDisplayTime units={minutes} unitsText={"m"} />
-          <CommonDisplayTime units={seconds} unitsText={"s"} />
-        </HStack>
-      )}
-      {upperLimitUnits === "hour" && (
-        <HStack justifyContent={"center"}>
-          <CommonDisplayTime units={hours} unitsText={"h"} />
-          <CommonDisplayTime units={minutes} unitsText={"m"} />
-          <CommonDisplayTime units={seconds} unitsText={"s"} />
-        </HStack>
-      )}
-      {upperLimitUnits === "minute" && (
-        <HStack justifyContent={"center"}>
-          <CommonDisplayTime units={minutes} unitsText={"m"} />
-          <CommonDisplayTime units={seconds} unitsText={"s"} />
-        </HStack>
-      )}
-      {upperLimitUnits === "second" && (
-        <HStack justifyContent={"center"}>
-          <CommonDisplayTime units={seconds} unitsText={"s"} />
-        </HStack>
+      {selectLanguage === "English" ? (
+        <>
+          {upperLimitUnits === "day" && (
+            <HStack justifyContent={"center"}>
+              <CommonDisplayTime units={days} unitsText={"d"} />
+              <CommonDisplayTime units={hours} unitsText={"h"} />
+              <CommonDisplayTime units={minutes} unitsText={"m"} />
+              <CommonDisplayTime units={seconds} unitsText={"s"} />
+            </HStack>
+          )}
+          {upperLimitUnits === "hour" && (
+            <HStack justifyContent={"center"}>
+              <CommonDisplayTime units={hours} unitsText={"h"} />
+              <CommonDisplayTime units={minutes} unitsText={"m"} />
+              <CommonDisplayTime units={seconds} unitsText={"s"} />
+            </HStack>
+          )}
+          {upperLimitUnits === "minute" && (
+            <HStack justifyContent={"center"}>
+              <CommonDisplayTime units={minutes} unitsText={"m"} />
+              <CommonDisplayTime units={seconds} unitsText={"s"} />
+            </HStack>
+          )}
+          {upperLimitUnits === "second" && (
+            <HStack justifyContent={"center"}>
+              <CommonDisplayTime units={seconds} unitsText={"s"} />
+            </HStack>
+          )}
+        </>
+      ) : (
+        <>
+          {upperLimitUnits === "day" && (
+            <HStack justifyContent={"center"}>
+              <CommonDisplayTime units={days} unitsText={"日"} />
+              <CommonDisplayTime units={hours} unitsText={"時"} />
+              <CommonDisplayTime units={minutes} unitsText={"分"} />
+              <CommonDisplayTime units={seconds} unitsText={"秒"} />
+            </HStack>
+          )}
+          {upperLimitUnits === "hour" && (
+            <HStack justifyContent={"center"}>
+              <CommonDisplayTime units={hours} unitsText={"時"} />
+              <CommonDisplayTime units={minutes} unitsText={"分"} />
+              <CommonDisplayTime units={seconds} unitsText={"秒"} />
+            </HStack>
+          )}
+          {upperLimitUnits === "minute" && (
+            <HStack justifyContent={"center"}>
+              <CommonDisplayTime units={minutes} unitsText={"分"} />
+              <CommonDisplayTime units={seconds} unitsText={"秒"} />
+            </HStack>
+          )}
+          {upperLimitUnits === "second" && (
+            <HStack justifyContent={"center"}>
+              <CommonDisplayTime units={seconds} unitsText={"秒"} />
+            </HStack>
+          )}
+        </>
       )}
     </HStack>
   );
