@@ -1,5 +1,6 @@
-import { HStack, Text } from "@chakra-ui/react";
+import { HStack } from "@chakra-ui/react";
 import React from "react";
+import CommonDisplayTime from "./CommonDisplayTime";
 
 type Props = {
   days: number;
@@ -31,58 +32,28 @@ const DisplayTime = ({ days, hours, minutes, seconds }: Props) => {
     <HStack justifyContent={"center"}>
       {upperLimitUnits === "day" && (
         <HStack justifyContent={"center"}>
-          <Text fontSize={100}>{days}</Text>
-          <Text alignSelf={"flex-end"} fontSize={70}>
-            d
-          </Text>
-          <Text fontSize={100}>{hours}</Text>
-          <Text alignSelf={"flex-end"} fontSize={70}>
-            h
-          </Text>
-          <Text fontSize={100}>{minutes}</Text>
-          <Text alignSelf={"flex-end"} fontSize={70}>
-            m
-          </Text>
-          <Text fontSize={100}>{seconds}</Text>
-          <Text alignSelf={"flex-end"} fontSize={70}>
-            s
-          </Text>
+          <CommonDisplayTime units={days} unitsText={"d"} />
+          <CommonDisplayTime units={hours} unitsText={"h"} />
+          <CommonDisplayTime units={minutes} unitsText={"m"} />
+          <CommonDisplayTime units={seconds} unitsText={"s"} />
         </HStack>
       )}
       {upperLimitUnits === "hour" && (
         <HStack justifyContent={"center"}>
-          <Text fontSize={100}>{hours}</Text>
-          <Text alignSelf={"flex-end"} fontSize={70}>
-            h
-          </Text>
-          <Text fontSize={100}>{minutes}</Text>
-          <Text alignSelf={"flex-end"} fontSize={70}>
-            m
-          </Text>
-          <Text fontSize={100}>{seconds}</Text>
-          <Text alignSelf={"flex-end"} fontSize={70}>
-            s
-          </Text>
+          <CommonDisplayTime units={hours} unitsText={"h"} />
+          <CommonDisplayTime units={minutes} unitsText={"m"} />
+          <CommonDisplayTime units={seconds} unitsText={"s"} />
         </HStack>
       )}
       {upperLimitUnits === "minute" && (
         <HStack justifyContent={"center"}>
-          <Text fontSize={100}>{minutes}</Text>
-          <Text alignSelf={"flex-end"} fontSize={70}>
-            m
-          </Text>
-          <Text fontSize={100}>{seconds}</Text>
-          <Text alignSelf={"flex-end"} fontSize={70}>
-            s
-          </Text>
+          <CommonDisplayTime units={minutes} unitsText={"m"} />
+          <CommonDisplayTime units={seconds} unitsText={"s"} />
         </HStack>
       )}
       {upperLimitUnits === "second" && (
         <HStack justifyContent={"center"}>
-          <Text fontSize={100}>{seconds}</Text>
-          <Text alignSelf={"flex-end"} fontSize={70}>
-            s
-          </Text>
+          <CommonDisplayTime units={seconds} unitsText={"s"} />
         </HStack>
       )}
     </HStack>
