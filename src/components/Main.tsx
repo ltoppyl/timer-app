@@ -2,6 +2,7 @@ import React from "react";
 import { HStack, Text } from "@chakra-ui/react";
 import { useTimer } from "react-timer-hook";
 import ActionSelectButton from "./ActionSelectButton";
+import DisplayTime from "./DisplayTime";
 
 type Props = {
   settingTime: number;
@@ -22,7 +23,8 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
 
   return (
     <>
-      <HStack justifyContent={"center"}>
+      <DisplayTime days={days} hours={hours} minutes={minutes} seconds={seconds} />
+      {/* <HStack justifyContent={"center"}>
         <Text fontSize={100}>{days}</Text>
         <Text alignSelf={"flex-end"} fontSize={70}>
           d
@@ -39,7 +41,7 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
         <Text alignSelf={"flex-end"} fontSize={70}>
           s
         </Text>
-      </HStack>
+      </HStack> */}
       <HStack justifyContent={"center"}>
         <Text textAlign={"center"}>【{isRunning ? "Running" : "Not running"}】</Text>
         <Text textAlign={"center"}>
