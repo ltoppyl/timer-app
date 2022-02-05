@@ -28,7 +28,6 @@ const MenuFunction = ({ setSelectLanguage }: Props) => {
   let _selectLanguage = "";
 
   const RadioChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
     _selectLanguage = e.target.value;
   };
 
@@ -56,9 +55,9 @@ const MenuFunction = ({ setSelectLanguage }: Props) => {
                 言語を選択して下さい
               </AlertDialogHeader>
               <AlertDialogBody>
-                <RadioGroup>
+                <RadioGroup defaultValue="Japanese">
                   <Stack spacing={5} direction="row">
-                    <Radio colorScheme="red" value="Japanese" onChange={(e) => RadioChange(e)}>
+                    <Radio colorScheme="blue" value="Japanese" onChange={(e) => RadioChange(e)}>
                       日本語
                     </Radio>
                     <Radio colorScheme="blue" value="English" onChange={(e) => RadioChange(e)}>
@@ -73,7 +72,6 @@ const MenuFunction = ({ setSelectLanguage }: Props) => {
                   ml={3}
                   colorScheme="blue"
                   onClick={() => {
-                    console.log("Enter");
                     setSelectLanguage(_selectLanguage);
                     onClose();
                   }}
