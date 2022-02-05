@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, HStack } from "@chakra-ui/react";
-import SettingTime from "./SettingTime";
 
 type Props = {
   start: () => void;
@@ -11,14 +10,7 @@ type Props = {
   setSettingTime: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const ActionSelectButton = ({
-  start,
-  pause,
-  resume,
-  restart,
-  settingTime,
-  setSettingTime,
-}: Props) => {
+const ActionSelectButton = ({ start, pause, resume, restart, settingTime }: Props) => {
   return (
     <HStack justifyContent={"center"}>
       <Button
@@ -38,7 +30,6 @@ const ActionSelectButton = ({
       <Button colorScheme="black" variant="outline" onClick={resume}>
         Resume
       </Button>
-      <SettingTime setSettingTime={setSettingTime} />
     </HStack>
   );
 };
