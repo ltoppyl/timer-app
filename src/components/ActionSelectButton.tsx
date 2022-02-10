@@ -10,6 +10,7 @@ type Props = {
   setSettingTime: Dispatch<SetStateAction<number>>;
   selectLanguage: string;
   setIsRunning: Dispatch<SetStateAction<boolean>>;
+  setEffectToast: Dispatch<SetStateAction<boolean>>;
 };
 
 const ActionSelectButton = ({
@@ -20,6 +21,7 @@ const ActionSelectButton = ({
   settingTime,
   selectLanguage,
   setIsRunning,
+  setEffectToast,
 }: Props) => {
   return (
     <HStack justifyContent={"center"}>
@@ -30,6 +32,7 @@ const ActionSelectButton = ({
             variant="outline"
             onClick={() => {
               setIsRunning(true);
+              setEffectToast(false);
               const time = new Date();
               time.setSeconds(time.getSeconds() + settingTime);
               restart(time);
@@ -65,7 +68,7 @@ const ActionSelectButton = ({
             variant="outline"
             onClick={() => {
               setIsRunning(true);
-
+              setEffectToast(false);
               const time = new Date();
               time.setSeconds(time.getSeconds() + settingTime);
               restart(time);
