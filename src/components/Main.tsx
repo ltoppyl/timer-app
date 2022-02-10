@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { HStack, Text } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { HStack, Text, useToast } from "@chakra-ui/react";
 import { useTimer } from "react-timer-hook";
 import ActionSelectButton from "./ActionSelectButton";
 import DisplayTime from "./DisplayTime";
@@ -13,16 +13,36 @@ type Props = {
 };
 
 const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
-  const { seconds, minutes, hours, days, isRunning, start, pause, resume, restart } = useTimer({
+  const toast = useToast();
+
+  const { seconds, minutes, hours, days, start, pause, resume, restart } = useTimer({
     expiryTimestamp,
-    onExpire: () => console.warn("onExpire called"),
   });
+  const [isRunning, setIsRunning] = useState<boolean>(false);
+  const [effectToast, setEffectToast] = useState<boolean>(false);
   const [selectLanguage, setSelectLanguage] = useState<string>("English");
   const displayDay = Math.floor(settingTime / 86400);
   const displayHour = Math.floor((settingTime - displayDay * 86400) / 3600);
   const displayMinute = Math.floor((settingTime - (displayDay * 86400 + displayHour * 3600)) / 60);
   const displaySecond =
     settingTime - (displayDay * 86400 + displayHour * 3600 + displayMinute * 60);
+
+  if (isRunning === true && days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+    setEffectToast(true);
+    setIsRunning(false);
+  }
+
+  useEffect(() => {
+    if (effectToast === true) {
+      toast({
+        title: "時間だよー",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      });
+    }
+  }, [effectToast, toast]);
 
   return (
     <>
@@ -59,6 +79,8 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
           settingTime={settingTime}
           setSettingTime={setSettingTime}
           selectLanguage={selectLanguage}
+          setIsRunning={setIsRunning}
+          setEffectToast={setEffectToast}
         ></ActionSelectButton>
         <SettingTime setSettingTime={setSettingTime} />
         <MenuFunction setSelectLanguage={setSelectLanguage} />

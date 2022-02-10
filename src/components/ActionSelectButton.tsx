@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Button, HStack } from "@chakra-ui/react";
 
 type Props = {
@@ -7,8 +7,10 @@ type Props = {
   resume: () => void;
   restart: (newExpiryTimestamp: Date, autoStart?: boolean | undefined) => void;
   settingTime: number;
-  setSettingTime: React.Dispatch<React.SetStateAction<number>>;
+  setSettingTime: Dispatch<SetStateAction<number>>;
   selectLanguage: string;
+  setIsRunning: Dispatch<SetStateAction<boolean>>;
+  setEffectToast: Dispatch<SetStateAction<boolean>>;
 };
 
 const ActionSelectButton = ({
@@ -18,6 +20,8 @@ const ActionSelectButton = ({
   restart,
   settingTime,
   selectLanguage,
+  setIsRunning,
+  setEffectToast,
 }: Props) => {
   return (
     <HStack justifyContent={"center"}>
@@ -27,6 +31,8 @@ const ActionSelectButton = ({
             colorScheme="black"
             variant="outline"
             onClick={() => {
+              setIsRunning(true);
+              setEffectToast(false);
               const time = new Date();
               time.setSeconds(time.getSeconds() + settingTime);
               restart(time);
@@ -34,10 +40,24 @@ const ActionSelectButton = ({
           >
             Start
           </Button>
-          <Button colorScheme="black" variant="outline" onClick={pause}>
+          <Button
+            colorScheme="black"
+            variant="outline"
+            onClick={() => {
+              setIsRunning(false);
+              pause();
+            }}
+          >
             Pause
           </Button>
-          <Button colorScheme="black" variant="outline" onClick={resume}>
+          <Button
+            colorScheme="black"
+            variant="outline"
+            onClick={() => {
+              setIsRunning(true);
+              resume();
+            }}
+          >
             Resume
           </Button>
         </>
@@ -47,6 +67,8 @@ const ActionSelectButton = ({
             colorScheme="black"
             variant="outline"
             onClick={() => {
+              setIsRunning(true);
+              setEffectToast(false);
               const time = new Date();
               time.setSeconds(time.getSeconds() + settingTime);
               restart(time);
@@ -54,10 +76,24 @@ const ActionSelectButton = ({
           >
             開始
           </Button>
-          <Button colorScheme="black" variant="outline" onClick={pause}>
+          <Button
+            colorScheme="black"
+            variant="outline"
+            onClick={() => {
+              setIsRunning(false);
+              pause();
+            }}
+          >
             停止
           </Button>
-          <Button colorScheme="black" variant="outline" onClick={resume}>
+          <Button
+            colorScheme="black"
+            variant="outline"
+            onClick={() => {
+              setIsRunning(true);
+              resume();
+            }}
+          >
             再開
           </Button>
         </>

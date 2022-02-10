@@ -60,6 +60,14 @@ const SettingTime = ({ setSettingTime }: Props) => {
         _focus={{ boxShadow: "none" }}
       />
       <MenuList>
+        {" "}
+        <MenuItem
+          onClick={() => {
+            setSettingTime(1);
+          }}
+        >
+          0:01
+        </MenuItem>
         <MenuItem
           onClick={() => {
             setSettingTime(60);
