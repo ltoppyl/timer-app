@@ -15,7 +15,6 @@ type Props = {
 const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
   const { seconds, minutes, hours, days, start, pause, resume, restart } = useTimer({
     expiryTimestamp,
-    onExpire: () => console.warn("onExpire called"),
   });
 
   const [isRunning, setIsRunning] = useState<boolean>(false);
@@ -25,6 +24,9 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
   const displayMinute = Math.floor((settingTime - (displayDay * 86400 + displayHour * 3600)) / 60);
   const displaySecond =
     settingTime - (displayDay * 86400 + displayHour * 3600 + displayMinute * 60);
+
+  if (isRunning === true && days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+  }
 
   return (
     <>
