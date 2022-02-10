@@ -13,10 +13,12 @@ type Props = {
 };
 
 const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
-  const { seconds, minutes, hours, days, isRunning, start, pause, resume, restart } = useTimer({
+  const { seconds, minutes, hours, days, start, pause, resume, restart } = useTimer({
     expiryTimestamp,
     onExpire: () => console.warn("onExpire called"),
   });
+
+  const [isRunning, setIsRunning] = useState<boolean>(false);
   const [selectLanguage, setSelectLanguage] = useState<string>("English");
   const displayDay = Math.floor(settingTime / 86400);
   const displayHour = Math.floor((settingTime - displayDay * 86400) / 3600);
@@ -59,6 +61,7 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
           settingTime={settingTime}
           setSettingTime={setSettingTime}
           selectLanguage={selectLanguage}
+          setIsRunning={setIsRunning}
         ></ActionSelectButton>
         <SettingTime setSettingTime={setSettingTime} />
         <MenuFunction setSelectLanguage={setSelectLanguage} />
