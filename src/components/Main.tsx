@@ -82,8 +82,8 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
           setIsRunning={setIsRunning}
           setEffectToast={setEffectToast}
         ></ActionSelectButton>
-        <SettingTime setSettingTime={setSettingTime} />
-        <MenuFunction setSelectLanguage={setSelectLanguage} />
+        <SettingTime setSettingTime={setSettingTime} selectLanguage={selectLanguage} />
+        <MenuFunction selectLanguage={selectLanguage} setSelectLanguage={setSelectLanguage} />
       </HStack>
     </>
   );
