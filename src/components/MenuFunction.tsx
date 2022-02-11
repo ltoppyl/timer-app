@@ -112,7 +112,7 @@ const MenuFunction = ({ selectLanguage, setSelectLanguage }: Props) => {
                   </RadioGroup>
                 </AlertDialogBody>
                 <AlertDialogFooter>
-                  <Button onClick={onClose}>Cancel</Button>
+                  <Button onClick={onClose}>キャンセル</Button>
                   <Button
                     ml={3}
                     colorScheme="blue"
