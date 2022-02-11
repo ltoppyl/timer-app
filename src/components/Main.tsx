@@ -27,6 +27,20 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
   const displaySecond =
     settingTime - (displayDay * 86400 + displayHour * 3600 + displayMinute * 60);
 
+  let upperLimitUnits;
+  if (displayDay === 0 && displayHour === 0 && displayMinute === 0) {
+    upperLimitUnits = "second";
+  }
+  if (displayDay === 0 && displayHour === 0 && displayMinute !== 0) {
+    upperLimitUnits = "minute";
+  }
+  if (displayDay === 0 && displayHour !== 0) {
+    upperLimitUnits = "hour";
+  }
+  if (displayDay !== 0) {
+    upperLimitUnits = "day";
+  }
+
   if (isRunning === true && days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
     setEffectToast(true);
     setIsRunning(false);
@@ -57,16 +71,46 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
         {selectLanguage === "English" ? (
           <>
             <Text textAlign={"center"}>【{isRunning ? "Running" : "Not running"}】</Text>
-            <Text textAlign={"center"}>
-              Setting Time：{displayDay}d {displayHour}h {displayMinute}m {displaySecond}s
-            </Text>
+            {upperLimitUnits === "day" && (
+              <Text textAlign={"center"}>
+                Setting Time：{displayDay}d {displayHour}h {displayMinute}m {displaySecond}s
+              </Text>
+            )}
+            {upperLimitUnits === "hour" && (
+              <Text textAlign={"center"}>
+                Setting Time：{displayHour}h {displayMinute}m {displaySecond}s
+              </Text>
+            )}
+            {upperLimitUnits === "minute" && (
+              <Text textAlign={"center"}>
+                Setting Time：{displayMinute}m {displaySecond}s
+              </Text>
+            )}
+            {upperLimitUnits === "second" && (
+              <Text textAlign={"center"}>Setting Time：{displaySecond}s</Text>
+            )}
           </>
         ) : (
           <>
             <Text textAlign={"center"}>【{isRunning ? "動作中" : "停止中"}】</Text>
-            <Text textAlign={"center"}>
-              設定時間：{displayDay}日 {displayHour}時 {displayMinute}分 {displaySecond}秒
-            </Text>
+            {upperLimitUnits === "day" && (
+              <Text textAlign={"center"}>
+                設定時間：{displayDay}日 {displayHour}時 {displayMinute}分 {displaySecond}秒
+              </Text>
+            )}
+            {upperLimitUnits === "hour" && (
+              <Text textAlign={"center"}>
+                設定時間： {displayHour}時 {displayMinute}分 {displaySecond}秒
+              </Text>
+            )}{" "}
+            {upperLimitUnits === "minute" && (
+              <Text textAlign={"center"}>
+                設定時間： {displayMinute}分 {displaySecond}秒
+              </Text>
+            )}{" "}
+            {upperLimitUnits === "second" && (
+              <Text textAlign={"center"}>設定時間： {displaySecond}秒</Text>
+            )}
           </>
         )}
       </HStack>
