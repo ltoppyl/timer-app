@@ -2,10 +2,9 @@ type Props = {
   day: number;
   hour: number;
   minute: number;
-  second: number;
 };
 
-const JudgeUpperLimitUnits = ({ day, hour, minute, second }: Props) => {
+const JudgeUpperLimitUnits = ({ day, hour, minute }: Props) => {
   let upperLimitUnits = "";
 
   if (day === 0 && hour === 0 && minute === 0) {
