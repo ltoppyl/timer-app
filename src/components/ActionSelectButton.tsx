@@ -23,81 +23,63 @@ const ActionSelectButton = ({
   setIsRunning,
   setEffectToast,
 }: Props) => {
+  const buttonTextEnglish = ["Start", "Pause", "Resume"];
+  const buttonTextJapanese = ["開始", "停止", "再開"];
+  let buttonText = ["", "", ""];
+
+  if (selectLanguage === "English") {
+    buttonText = buttonTextEnglish;
+  } else if (selectLanguage === "Japanese") {
+    buttonText = buttonTextJapanese;
+  }
+
+  const handleStart = () => {
+    setIsRunning(true);
+    setEffectToast(false);
+    const time = new Date();
+    time.setSeconds(time.getSeconds() + settingTime);
+    restart(time);
+  };
+
+  const handlePause = () => {
+    setIsRunning(false);
+    pause();
+  };
+
+  const handleResume = () => {
+    setIsRunning(true);
+    resume();
+  };
+
   return (
     <HStack justifyContent={"center"}>
-      {selectLanguage === "English" ? (
-        <>
-          <Button
-            colorScheme="black"
-            variant="outline"
-            onClick={() => {
-              setIsRunning(true);
-              setEffectToast(false);
-              const time = new Date();
-              time.setSeconds(time.getSeconds() + settingTime);
-              restart(time);
-            }}
-          >
-            Start
-          </Button>
-          <Button
-            colorScheme="black"
-            variant="outline"
-            onClick={() => {
-              setIsRunning(false);
-              pause();
-            }}
-          >
-            Pause
-          </Button>
-          <Button
-            colorScheme="black"
-            variant="outline"
-            onClick={() => {
-              setIsRunning(true);
-              resume();
-            }}
-          >
-            Resume
-          </Button>
-        </>
-      ) : (
-        <>
-          <Button
-            colorScheme="black"
-            variant="outline"
-            onClick={() => {
-              setIsRunning(true);
-              setEffectToast(false);
-              const time = new Date();
-              time.setSeconds(time.getSeconds() + settingTime);
-              restart(time);
-            }}
-          >
-            開始
-          </Button>
-          <Button
-            colorScheme="black"
-            variant="outline"
-            onClick={() => {
-              setIsRunning(false);
-              pause();
-            }}
-          >
-            停止
-          </Button>
-          <Button
-            colorScheme="black"
-            variant="outline"
-            onClick={() => {
-              setIsRunning(true);
-              resume();
-            }}
-          >
-            再開
-          </Button>
-        </>
-      )}
+      <Button
+        colorScheme="black"
+        variant="outline"
+        onClick={() => {
+          handleStart();
+        }}
+      >
+        {buttonText[0]}
+      </Button>
+      <Button
+        colorScheme="black"
+        variant="outline"
+        onClick={() => {
+          handlePause();
+        }}
+      >
+        {buttonText[1]}
+      </Button>
+      <Button
+        colorScheme="black"
+        variant="outline"
+        onClick={() => {
+          handleResume();
+        }}
+      >
+        {buttonText[2]}
+      </Button>
     </HStack>
   );
 };
