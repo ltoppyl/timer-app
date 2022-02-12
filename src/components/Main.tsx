@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { HStack, Text, useToast } from "@chakra-ui/react";
+import { HStack, useToast } from "@chakra-ui/react";
 import { useTimer } from "react-timer-hook";
 import ActionSelectButton from "./ActionSelectButton";
 import DisplayTime from "./DisplayTime";
