@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { HStack, useToast } from "@chakra-ui/react";
 import { useTimer } from "react-timer-hook";
 import ActionSelectButton from "./ActionSelectButton";
@@ -10,7 +10,7 @@ import useJudgeUpperLimitUnits from "../hooks/useJudgeUpperLimitUnits";
 
 type Props = {
   settingTime: number;
-  setSettingTime: React.Dispatch<React.SetStateAction<number>>;
+  setSettingTime: Dispatch<SetStateAction<number>>;
   expiryTimestamp: Date;
 };
 
