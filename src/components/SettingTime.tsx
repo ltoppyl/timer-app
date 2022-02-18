@@ -14,6 +14,7 @@ import {
   Input,
   Button,
   HStack,
+  Text,
 } from "@chakra-ui/react";
 import { TimeIcon } from "@chakra-ui/icons";
 
@@ -29,9 +30,22 @@ const SettingTime = ({ setSettingTime, selectLanguage }: Props) => {
   const [inputTimeValueHour, setInputTimeValueHour] = useState<number>(0);
   const [inputTimeValueMinute, setInputTimeValueMinute] = useState<number>(0);
   const [inputTimeValueSecond, setInputTimeValueSecond] = useState<number>(0);
+  const [inputValidation, setInputValidation] = useState<boolean>(true);
 
-  const textEnglish = ["Any Time", "Please enter any time", "Enter"];
-  const textJapanese = ["任意の時間", "任意の時間を入力してください", "決定"];
+  const textEnglish = [
+    "Any Time",
+    "Please enter any time",
+    "Enter",
+    "Cancel",
+    "※Please enter the value appropriately",
+  ];
+  const textJapanese = [
+    "任意の時間",
+    "任意の時間を入力してください",
+    "決定",
+    "キャンセル",
+    "※数値を適切に入力してください",
+  ];
   let text = ["", "", ""];
   if (selectLanguage === "English") {
     text = textEnglish;
@@ -49,6 +63,20 @@ const SettingTime = ({ setSettingTime, selectLanguage }: Props) => {
     onClose();
   };
 
+  const checkValidation = () => {
+    if (
+      inputTimeValueDay === 0 &&
+      inputTimeValueHour === 0 &&
+      inputTimeValueMinute === 0 &&
+      inputTimeValueSecond === 0
+    ) {
+      setInputValidation(false);
+    } else {
+      setInputValidation(true);
+      inputAnyTime();
+    }
+  };
+
   const handleChangeInputDay = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputTimeValueDay(Number(event.target.value));
   };
@@ -60,6 +88,11 @@ const SettingTime = ({ setSettingTime, selectLanguage }: Props) => {
   };
   const handleChangeInputSecond = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputTimeValueSecond(Number(event.target.value));
+  };
+
+  const handleCancel = () => {
+    setInputValidation(true);
+    onClose();
   };
 
   return (
@@ -114,6 +147,7 @@ const SettingTime = ({ setSettingTime, selectLanguage }: Props) => {
                 {text[1]}
               </AlertDialogHeader>
               <AlertDialogBody>
+                {inputValidation === false && <Text color={"red"}>{text[4]}</Text>}
                 <HStack>
                   <Input placeholder="day" onChange={handleChangeInputDay} />
                   <Input placeholder="hour" onChange={handleChangeInputHour} />
@@ -122,8 +156,8 @@ const SettingTime = ({ setSettingTime, selectLanguage }: Props) => {
                 </HStack>
               </AlertDialogBody>
               <AlertDialogFooter>
-                <Button onClick={onClose}>Cancel</Button>
-                <Button colorScheme="blue" onClick={inputAnyTime} ml={3}>
+                <Button onClick={handleCancel}>{text[3]}</Button>
+                <Button colorScheme="blue" onClick={checkValidation} ml={3}>
                   {text[2]}
                 </Button>
               </AlertDialogFooter>
