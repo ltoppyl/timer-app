@@ -37,7 +37,7 @@ const DisplaySettingTime = ({
 
   return (
     <HStack justifyContent={"center"}>
-      <Text textAlign={"center"}>【{isRunning ? displayIsRunning[0] : displayIsRunning[1]}】</Text>
+      <Text textAlign={"center"}>【{isRunning ? displayIsRunning[1] : displayIsRunning[2]}】</Text>
       {upperLimitUnits === "day" && (
         <Text textAlign={"center"}>
           {displayIsRunning[0]}：{day}
