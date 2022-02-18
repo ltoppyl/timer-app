@@ -30,6 +30,15 @@ const SettingTime = ({ setSettingTime, selectLanguage }: Props) => {
   const [inputTimeValueMinute, setInputTimeValueMinute] = useState<number>(0);
   const [inputTimeValueSecond, setInputTimeValueSecond] = useState<number>(0);
 
+  const textEnglish = ["Any Time", "Please enter any time", "Enter"];
+  const textJapanese = ["任意の時間", "任意の時間を入力してください", "決定"];
+  let text = ["", "", ""];
+  if (selectLanguage === "English") {
+    text = textEnglish;
+  } else if (selectLanguage === "Japanese") {
+    text = textJapanese;
+  }
+
   const inputAnyTime = () => {
     const inputTimeValue =
       86400 * inputTimeValueDay +
@@ -63,7 +72,6 @@ const SettingTime = ({ setSettingTime, selectLanguage }: Props) => {
         _focus={{ boxShadow: "none" }}
       />
       <MenuList>
-        {" "}
         <MenuItem
           onClick={() => {
             setSettingTime(1);
@@ -80,13 +88,6 @@ const SettingTime = ({ setSettingTime, selectLanguage }: Props) => {
         </MenuItem>
         <MenuItem
           onClick={() => {
-            setSettingTime(180);
-          }}
-        >
-          3:00
-        </MenuItem>
-        <MenuItem
-          onClick={() => {
             setSettingTime(300);
           }}
         >
@@ -94,74 +95,40 @@ const SettingTime = ({ setSettingTime, selectLanguage }: Props) => {
         </MenuItem>
         <MenuItem
           onClick={() => {
-            setSettingTime(3600);
+            setSettingTime(600);
           }}
         >
-          60:00
+          10:00
         </MenuItem>
-        {selectLanguage === "English" ? (
-          <MenuItem
-            onClick={() => {
-              setIsOpen(true);
-            }}
-          >
-            Any Time
-          </MenuItem>
-        ) : (
-          <MenuItem
-            onClick={() => {
-              setIsOpen(true);
-            }}
-          >
-            任意の時間
-          </MenuItem>
-        )}
+        <MenuItem
+          onClick={() => {
+            setIsOpen(true);
+          }}
+        >
+          {text[0]}
+        </MenuItem>
         <AlertDialog isOpen={isOpen} onClose={onClose} leastDestructiveRef={undefined}>
-          {selectLanguage === "English" ? (
-            <AlertDialogOverlay>
-              <AlertDialogContent>
-                <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                  Please enter any time
-                </AlertDialogHeader>
-                <AlertDialogBody>
-                  <HStack>
-                    <Input placeholder="day" onChange={handleChangeInputDay} />
-                    <Input placeholder="hour" onChange={handleChangeInputHour} />
-                    <Input placeholder="minute" onChange={handleChangeInputMinute} />
-                    <Input placeholder="second" onChange={handleChangeInputSecond} />
-                  </HStack>
-                </AlertDialogBody>
-                <AlertDialogFooter>
-                  <Button onClick={onClose}>Cancel</Button>
-                  <Button colorScheme="blue" onClick={inputAnyTime} ml={3}>
-                    ENTER
-                  </Button>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialogOverlay>
-          ) : (
-            <AlertDialogOverlay>
-              <AlertDialogContent>
-                <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                  任意の時間を入力してください
-                </AlertDialogHeader>
-                <AlertDialogBody>
-                  <HStack>
-                    <Input placeholder="day" onChange={handleChangeInputDay} />
-                    <Input placeholder="hour" onChange={handleChangeInputHour} />
-                    <Input placeholder="minute" onChange={handleChangeInputMinute} />
-                    <Input placeholder="second" onChange={handleChangeInputSecond} />
-                  </HStack>
-                </AlertDialogBody>
-                <AlertDialogFooter>
-                  <Button onClick={onClose}>Cancel</Button>
-                  <Button colorScheme="blue" onClick={inputAnyTime} ml={3}>
-                    決定
-                  </Button>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialogOverlay>
-          )}
+          <AlertDialogOverlay>
+            <AlertDialogContent>
+              <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                {text[1]}
+              </AlertDialogHeader>
+              <AlertDialogBody>
+                <HStack>
+                  <Input placeholder="day" onChange={handleChangeInputDay} />
+                  <Input placeholder="hour" onChange={handleChangeInputHour} />
+                  <Input placeholder="minute" onChange={handleChangeInputMinute} />
+                  <Input placeholder="second" onChange={handleChangeInputSecond} />
+                </HStack>
+              </AlertDialogBody>
+              <AlertDialogFooter>
+                <Button onClick={onClose}>Cancel</Button>
+                <Button colorScheme="blue" onClick={inputAnyTime} ml={3}>
+                  {text[2]}
+                </Button>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialogOverlay>
         </AlertDialog>
       </MenuList>
     </Menu>

@@ -32,6 +32,15 @@ const MenuFunction = ({ selectLanguage, setSelectLanguage }: Props) => {
     _selectLanguage = e.target.value;
   };
 
+  const textEnglish = ["Language", "Please enter the language", "Cancel", "Enter"];
+  const textJapanese = ["言語", "言語を選択して下さい", "キャンセル", "決定"];
+  let text = ["", "", "", ""];
+  if (selectLanguage === "English") {
+    text = textEnglish;
+  } else if (selectLanguage === "Japanese") {
+    text = textJapanese;
+  }
+
   return (
     <Menu>
       <MenuButton
@@ -42,91 +51,46 @@ const MenuFunction = ({ selectLanguage, setSelectLanguage }: Props) => {
         _focus={{ boxShadow: "none" }}
       />
       <MenuList>
-        {selectLanguage === "English" ? (
-          <MenuItem
-            onClick={() => {
-              setIsOpen(true);
-            }}
-          >
-            Language
-          </MenuItem>
-        ) : (
-          <MenuItem
-            onClick={() => {
-              setIsOpen(true);
-            }}
-          >
-            言語
-          </MenuItem>
-        )}
+        <MenuItem
+          onClick={() => {
+            setIsOpen(true);
+          }}
+        >
+          {text[0]}
+        </MenuItem>
         <AlertDialog isOpen={isOpen} onClose={onClose} leastDestructiveRef={undefined}>
-          {selectLanguage === "English" ? (
-            <AlertDialogOverlay>
-              <AlertDialogContent>
-                <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                  Please enter the language
-                </AlertDialogHeader>
-                <AlertDialogBody>
-                  <RadioGroup defaultValue="Japanese">
-                    <Stack spacing={5} direction="row">
-                      <Radio colorScheme="blue" value="Japanese" onChange={(e) => RadioChange(e)}>
-                        日本語
-                      </Radio>
-                      <Radio colorScheme="blue" value="English" onChange={(e) => RadioChange(e)}>
-                        English
-                      </Radio>
-                    </Stack>
-                  </RadioGroup>
-                </AlertDialogBody>
-                <AlertDialogFooter>
-                  <Button onClick={onClose}>Cancel</Button>
-                  <Button
-                    ml={3}
-                    colorScheme="blue"
-                    onClick={() => {
-                      setSelectLanguage(_selectLanguage);
-                      onClose();
-                    }}
-                  >
-                    ENTER
-                  </Button>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialogOverlay>
-          ) : (
-            <AlertDialogOverlay>
-              <AlertDialogContent>
-                <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                  言語を選択して下さい
-                </AlertDialogHeader>
-                <AlertDialogBody>
-                  <RadioGroup defaultValue="Japanese">
-                    <Stack spacing={5} direction="row">
-                      <Radio colorScheme="blue" value="Japanese" onChange={(e) => RadioChange(e)}>
-                        日本語
-                      </Radio>
-                      <Radio colorScheme="blue" value="English" onChange={(e) => RadioChange(e)}>
-                        English
-                      </Radio>
-                    </Stack>
-                  </RadioGroup>
-                </AlertDialogBody>
-                <AlertDialogFooter>
-                  <Button onClick={onClose}>キャンセル</Button>
-                  <Button
-                    ml={3}
-                    colorScheme="blue"
-                    onClick={() => {
-                      setSelectLanguage(_selectLanguage);
-                      onClose();
-                    }}
-                  >
-                    決定
-                  </Button>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialogOverlay>
-          )}
+          <AlertDialogOverlay>
+            <AlertDialogContent>
+              <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                {text[1]}
+              </AlertDialogHeader>
+              <AlertDialogBody>
+                <RadioGroup defaultValue="Japanese">
+                  <Stack spacing={5} direction="row">
+                    <Radio colorScheme="blue" value="Japanese" onChange={(e) => RadioChange(e)}>
+                      日本語
+                    </Radio>
+                    <Radio colorScheme="blue" value="English" onChange={(e) => RadioChange(e)}>
+                      English
+                    </Radio>
+                  </Stack>
+                </RadioGroup>
+              </AlertDialogBody>
+              <AlertDialogFooter>
+                <Button onClick={onClose}>{text[2]}</Button>
+                <Button
+                  ml={3}
+                  colorScheme="blue"
+                  onClick={() => {
+                    setSelectLanguage(_selectLanguage);
+                    onClose();
+                  }}
+                >
+                  {text[3]}
+                </Button>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialogOverlay>
         </AlertDialog>
       </MenuList>
     </Menu>
