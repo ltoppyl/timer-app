@@ -107,13 +107,6 @@ const SettingTime = ({ setSettingTime, selectLanguage }: Props) => {
       <MenuList>
         <MenuItem
           onClick={() => {
-            setSettingTime(1);
-          }}
-        >
-          0:01
-        </MenuItem>
-        <MenuItem
-          onClick={() => {
             setSettingTime(60);
           }}
         >
@@ -132,6 +125,13 @@ const SettingTime = ({ setSettingTime, selectLanguage }: Props) => {
           }}
         >
           10:00
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            setSettingTime(3600);
+          }}
+        >
+          60:00
         </MenuItem>
         <MenuItem
           onClick={() => {
