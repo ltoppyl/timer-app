@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { HStack, useToast } from "@chakra-ui/react";
 import { useTimer } from "react-timer-hook";
 import { useSound } from "use-sound";
-import sound from "../sounds/test.mp3";
+import sound from "../sounds/sound.mp3";
 import ActionSelectButton from "./ActionSelectButton";
 import DisplayTime from "./DisplayTime";
 import SettingTime from "./SettingTime";
