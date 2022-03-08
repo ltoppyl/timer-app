@@ -1,6 +1,8 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { HStack, useToast } from "@chakra-ui/react";
 import { useTimer } from "react-timer-hook";
+import { useSound } from "use-sound";
+import sound from "../sounds/test.mp3";
 import ActionSelectButton from "./ActionSelectButton";
 import DisplayTime from "./DisplayTime";
 import SettingTime from "./SettingTime";
@@ -19,6 +21,7 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
   const { seconds, minutes, hours, days, start, pause, resume, restart } = useTimer({
     expiryTimestamp,
   });
+  const [play] = useSound(sound);
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const [effectToast, setEffectToast] = useState<boolean>(false);
   const [selectLanguage, setSelectLanguage] = useState<string>("English");
@@ -45,8 +48,9 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
         isClosable: true,
         position: "top",
       });
+      play();
     }
-  }, [effectToast, toast]);
+  }, [effectToast, play, toast]);
 
   return (
     <>
