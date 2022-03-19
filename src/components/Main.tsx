@@ -54,13 +54,7 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
 
   return (
     <>
-      <DisplayTime
-        days={days}
-        hours={hours}
-        minutes={minutes}
-        seconds={seconds}
-        selectLanguage={selectLanguage}
-      />
+      <DisplayTime days={days} hours={hours} minutes={minutes} seconds={seconds} />
       <DisplaySettingTime
         day={displayDay}
         hour={displayHour}
@@ -83,7 +77,7 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
           setEffectToast={setEffectToast}
         ></ActionSelectButton>
         <SettingTime setSettingTime={setSettingTime} selectLanguage={selectLanguage} />
-        <MenuFunction selectLanguage={selectLanguage} setSelectLanguage={setSelectLanguage} />
+        <MenuFunction />
       </HStack>
     </>
   );

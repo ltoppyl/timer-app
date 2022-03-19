@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import {
   IconButton,
   MenuButton,
@@ -17,15 +17,13 @@ import {
   Radio,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 
-type Props = {
-  selectLanguage: string;
-  setSelectLanguage: Dispatch<SetStateAction<string>>;
-};
-
-const MenuFunction = ({ selectLanguage, setSelectLanguage }: Props) => {
+const MenuFunction = () => {
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => setIsOpen(false);
+  const selectLanguage = useSelector((state: RootStateOrAny) => state.language);
+  const dispatch = useDispatch();
   let _selectLanguage = "Japanese";
 
   const RadioChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -35,11 +33,20 @@ const MenuFunction = ({ selectLanguage, setSelectLanguage }: Props) => {
   const textEnglish = ["Language", "Please enter the language", "Cancel", "Enter"];
   const textJapanese = ["言語", "言語を選択して下さい", "キャンセル", "決定"];
   let text = ["", "", "", ""];
+
   if (selectLanguage === "English") {
     text = textEnglish;
   } else if (selectLanguage === "Japanese") {
     text = textJapanese;
   }
+
+  const changeLanguage = () => {
+    if (_selectLanguage === "Japanese") {
+      dispatch({ type: "TO_JAPANESE" });
+    } else {
+      dispatch({ type: "TO_ENGLISH" });
+    }
+  };
 
   return (
     <Menu>
@@ -82,7 +89,7 @@ const MenuFunction = ({ selectLanguage, setSelectLanguage }: Props) => {
                   ml={3}
                   colorScheme="blue"
                   onClick={() => {
-                    setSelectLanguage(_selectLanguage);
+                    changeLanguage();
                     onClose();
                   }}
                 >

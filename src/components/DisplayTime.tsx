@@ -1,5 +1,7 @@
-import { HStack } from "@chakra-ui/react";
 import React from "react";
+import { HStack } from "@chakra-ui/react";
+import { RootStateOrAny, useSelector } from "react-redux";
+
 import CommonDisplayTime from "./CommonDisplayTime";
 import useJudgeUpperLimitUnits from "../hooks/useJudgeUpperLimitUnits";
 
@@ -8,11 +10,11 @@ type Props = {
   hours: number;
   minutes: number;
   seconds: number;
-  selectLanguage: string;
 };
 
-const DisplayTime = ({ days, hours, minutes, seconds, selectLanguage }: Props) => {
+const DisplayTime = ({ days, hours, minutes, seconds }: Props) => {
   let upperLimitUnits = useJudgeUpperLimitUnits(days, hours, minutes);
+  const selectLanguage = useSelector((state: RootStateOrAny) => state.language);
   const unitsEnglish = ["d", "h", "m", "s"];
   const unitsJapanese = ["日", "時", "分", "秒"];
   let units = ["", "", "", ""];
