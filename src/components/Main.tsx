@@ -24,7 +24,6 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
   const [play] = useSound(sound);
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const [effectToast, setEffectToast] = useState<boolean>(false);
-  const [selectLanguage, setSelectLanguage] = useState<string>("English");
 
   const displayDay = Math.floor(settingTime / 86400);
   const displayHour = Math.floor((settingTime - displayDay * 86400) / 3600);
@@ -54,20 +53,13 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
 
   return (
     <>
-      <DisplayTime
-        days={days}
-        hours={hours}
-        minutes={minutes}
-        seconds={seconds}
-        selectLanguage={selectLanguage}
-      />
+      <DisplayTime days={days} hours={hours} minutes={minutes} seconds={seconds} />
       <DisplaySettingTime
         day={displayDay}
         hour={displayHour}
         minute={displayMinute}
         second={displaySecond}
         isRunning={isRunning}
-        selectLanguage={selectLanguage}
         upperLimitUnits={upperLimitUnits.upperLimitUnits}
       />
       <HStack justifyContent={"center"}>
@@ -78,12 +70,11 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
           restart={restart}
           settingTime={settingTime}
           setSettingTime={setSettingTime}
-          selectLanguage={selectLanguage}
           setIsRunning={setIsRunning}
           setEffectToast={setEffectToast}
         ></ActionSelectButton>
-        <SettingTime setSettingTime={setSettingTime} selectLanguage={selectLanguage} />
-        <MenuFunction selectLanguage={selectLanguage} setSelectLanguage={setSelectLanguage} />
+        <SettingTime setSettingTime={setSettingTime} />
+        <MenuFunction />
       </HStack>
     </>
   );

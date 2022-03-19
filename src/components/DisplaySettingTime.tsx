@@ -1,5 +1,6 @@
 import { HStack, Text } from "@chakra-ui/react";
 import React from "react";
+import { RootStateOrAny, useSelector } from "react-redux";
 
 type Props = {
   day: number;
@@ -7,22 +8,14 @@ type Props = {
   minute: number;
   second: number;
   isRunning: boolean;
-  selectLanguage: string;
   upperLimitUnits: string;
 };
 
-const DisplaySettingTime = ({
-  day,
-  hour,
-  minute,
-  second,
-  isRunning,
-  selectLanguage,
-  upperLimitUnits,
-}: Props) => {
+const DisplaySettingTime = ({ day, hour, minute, second, isRunning, upperLimitUnits }: Props) => {
   const displayIsRunningEnglish = ["Setting Time", "Running", "Not Running"];
   const displayIsRunningJapanese = ["設定時間", "動作中", "停止中"];
   let displayIsRunning = ["", ""];
+  const selectLanguage = useSelector((state: RootStateOrAny) => state.language);
   const displayUnitsEnglish = ["d", "h", "m", "s"];
   const displayUnitsJapanese = ["日", "時", "分", "秒"];
   let displayUnite = ["", "", "", ""];

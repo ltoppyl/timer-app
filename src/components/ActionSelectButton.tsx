@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { Button, HStack } from "@chakra-ui/react";
+import { RootStateOrAny, useSelector } from "react-redux";
 
 type Props = {
   start: () => void;
@@ -8,7 +9,6 @@ type Props = {
   restart: (newExpiryTimestamp: Date, autoStart?: boolean | undefined) => void;
   settingTime: number;
   setSettingTime: Dispatch<SetStateAction<number>>;
-  selectLanguage: string;
   setIsRunning: Dispatch<SetStateAction<boolean>>;
   setEffectToast: Dispatch<SetStateAction<boolean>>;
 };
@@ -19,13 +19,13 @@ const ActionSelectButton = ({
   resume,
   restart,
   settingTime,
-  selectLanguage,
   setIsRunning,
   setEffectToast,
 }: Props) => {
   const buttonTextEnglish = ["Start", "Pause", "Resume"];
   const buttonTextJapanese = ["開始", "停止", "再開"];
   let buttonText = ["", "", ""];
+  const selectLanguage = useSelector((state: RootStateOrAny) => state.language);
 
   if (selectLanguage === "English") {
     buttonText = buttonTextEnglish;
