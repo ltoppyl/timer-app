@@ -17,15 +17,16 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { TimeIcon } from "@chakra-ui/icons";
+import { RootStateOrAny, useSelector } from "react-redux";
 
 type Props = {
   setSettingTime: Dispatch<SetStateAction<number>>;
-  selectLanguage: string;
 };
 
-const SettingTime = ({ setSettingTime, selectLanguage }: Props) => {
+const SettingTime = ({ setSettingTime }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => setIsOpen(false);
+  const selectLanguage = useSelector((state: RootStateOrAny) => state.language);
   const [inputTimeValueDay, setInputTimeValueDay] = useState<number>(0);
   const [inputTimeValueHour, setInputTimeValueHour] = useState<number>(0);
   const [inputTimeValueMinute, setInputTimeValueMinute] = useState<number>(0);
