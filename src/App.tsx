@@ -1,21 +1,19 @@
 import { Container } from "@chakra-ui/react";
-import React, { useState } from "react";
-import MainCountdown from "./components/countdown/MainCountdown";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-function App() {
-  const time = new Date();
-  const [settingTime, setSettingTime] = useState<number>(0);
-  time.setSeconds(time.getSeconds() + settingTime);
+import Home from "./pages/Home";
 
+const App = () => {
   return (
-    <Container maxW="container.sm">
-      <MainCountdown
-        settingTime={settingTime}
-        setSettingTime={setSettingTime}
-        expiryTimestamp={time}
-      />
-    </Container>
+    <BrowserRouter>
+      <Container maxW="container.sm">
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Container>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

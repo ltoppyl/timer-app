@@ -16,7 +16,7 @@ type Props = {
   expiryTimestamp: Date;
 };
 
-const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
+const HomeCountdown = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
   const toast = useToast();
   const { seconds, minutes, hours, days, start, pause, resume, restart } = useTimer({
     expiryTimestamp,
@@ -79,4 +79,4 @@ const Timer = ({ settingTime, setSettingTime, expiryTimestamp }: Props) => {
     </>
   );
 };
-export default Timer;
+export default HomeCountdown;
