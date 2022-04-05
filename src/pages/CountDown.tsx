@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import HomeCountdown from "../components/countdown/HomeCountdown";
 
-const MainCountdown = () => {
+const Countdown = () => {
   const time = new Date();
   const [settingTime, setSettingTime] = useState<number>(0);
   time.setSeconds(time.getSeconds() + settingTime);
@@ -14,4 +14,4 @@ const MainCountdown = () => {
   );
 };
 
-export default MainCountdown;
+export default Countdown;
