@@ -3,7 +3,7 @@ import { HStack } from "@chakra-ui/react";
 import { RootStateOrAny, useSelector } from "react-redux";
 
 import CommonDisplayTime from "./CommonDisplayTime";
-import useJudgeUpperLimitUnits from "../hooks/useJudgeUpperLimitUnits";
+import useJudgeUpperLimitUnits from "../../hooks/useJudgeUpperLimitUnits";
 
 type Props = {
   days: number;
