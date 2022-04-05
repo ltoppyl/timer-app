@@ -34,7 +34,7 @@ const Home = () => {
           colorScheme="black"
           variant="outline"
           onClick={() => {
-            navigate("/test");
+            navigate("/time");
           }}
         >
           Time
