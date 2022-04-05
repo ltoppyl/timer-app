@@ -1,6 +1,6 @@
 import { Container } from "@chakra-ui/react";
 import React, { useState } from "react";
-import Main from "./components/Main";
+import Main from "./components/countdown/Main";
 
 function App() {
   const time = new Date();
