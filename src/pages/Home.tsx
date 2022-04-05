@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, GridItem, Link, VStack } from "@chakra-ui/react";
+import { Button, GridItem, VStack } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
@@ -11,7 +11,8 @@ const Home = () => {
         <GridItem w="100%" h="10" bg="white" />
         <Button
           w="100%"
-          colorScheme="gray"
+          colorScheme="black"
+          variant="outline"
           onClick={() => {
             navigate("/countdown");
           }}
@@ -20,7 +21,8 @@ const Home = () => {
         </Button>
         <Button
           w="100%"
-          colorScheme="gray"
+          colorScheme="black"
+          variant="outline"
           onClick={() => {
             navigate("/countup");
           }}
@@ -29,7 +31,8 @@ const Home = () => {
         </Button>
         <Button
           w="100%"
-          colorScheme="gray"
+          colorScheme="black"
+          variant="outline"
           onClick={() => {
             navigate("/test");
           }}
