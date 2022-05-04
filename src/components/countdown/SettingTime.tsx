@@ -99,6 +99,7 @@ const SettingTime = ({ setSettingTime }: Props) => {
   return (
     <Menu>
       <MenuButton
+        className="setting-time-menu-button"
         as={IconButton}
         icon={<TimeIcon />}
         variant="ghost"

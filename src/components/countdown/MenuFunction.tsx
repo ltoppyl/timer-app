@@ -51,6 +51,7 @@ const MenuFunction = () => {
   return (
     <Menu>
       <MenuButton
+        className="menu-function"
         as={IconButton}
         icon={<HamburgerIcon />}
         variant="ghost"

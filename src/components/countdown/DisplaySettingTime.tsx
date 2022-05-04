@@ -30,9 +30,11 @@ const DisplaySettingTime = ({ day, hour, minute, second, isRunning, upperLimitUn
 
   return (
     <HStack justifyContent={"center"}>
-      <Text textAlign={"center"}>【{isRunning ? displayIsRunning[1] : displayIsRunning[2]}】</Text>
+      <Text className="isRunning" textAlign={"center"}>
+        【{isRunning ? displayIsRunning[1] : displayIsRunning[2]}】
+      </Text>
       {upperLimitUnits === "day" && (
-        <Text textAlign={"center"}>
+        <Text className="setting-time" textAlign={"center"}>
           {displayIsRunning[0]}：{day}
           {displayUnite[0]} {hour}
           {displayUnite[1]} {minute}
@@ -41,7 +43,7 @@ const DisplaySettingTime = ({ day, hour, minute, second, isRunning, upperLimitUn
         </Text>
       )}
       {upperLimitUnits === "hour" && (
-        <Text textAlign={"center"}>
+        <Text className="setting-time" textAlign={"center"}>
           {displayIsRunning[0]}： {hour}
           {displayUnite[1]} {minute}
           {displayUnite[2]} {second}
@@ -49,14 +51,14 @@ const DisplaySettingTime = ({ day, hour, minute, second, isRunning, upperLimitUn
         </Text>
       )}
       {upperLimitUnits === "minute" && (
-        <Text textAlign={"center"}>
+        <Text className="setting-time" textAlign={"center"}>
           {displayIsRunning[0]}： {minute}
           {displayUnite[2]} {second}
           {displayUnite[3]}
         </Text>
       )}
       {upperLimitUnits === "second" && (
-        <Text textAlign={"center"}>
+        <Text className="setting-time" textAlign={"center"}>
           {displayIsRunning[0]}：{second}
           {displayUnite[3]}
         </Text>
