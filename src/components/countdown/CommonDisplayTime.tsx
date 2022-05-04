@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "@chakra-ui/react";
+import { HStack, Text } from "@chakra-ui/react";
 
 type Props = {
   units: number;
@@ -8,12 +8,12 @@ type Props = {
 
 const CommonDisplayTime = ({ units, unitsText }: Props) => {
   return (
-    <>
+    <HStack className="display-time">
       <Text fontSize={100}>{units}</Text>
       <Text alignSelf={"flex-end"} fontSize={70}>
         {unitsText}
       </Text>
-    </>
+    </HStack>
   );
 };
 

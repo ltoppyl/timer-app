@@ -52,7 +52,7 @@ const ActionSelectButton = ({
   };
 
   return (
-    <HStack justifyContent={"center"}>
+    <HStack className="action-select-button" justifyContent={"center"}>
       <Button
         colorScheme="black"
         variant="outline"
