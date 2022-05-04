@@ -52,35 +52,37 @@ const ActionSelectButton = ({
   };
 
   return (
-    <HStack className="action-select-button" justifyContent={"center"}>
-      <Button
-        colorScheme="black"
-        variant="outline"
-        onClick={() => {
-          handleStart();
-        }}
-      >
-        {buttonText[0]}
-      </Button>
-      <Button
-        colorScheme="black"
-        variant="outline"
-        onClick={() => {
-          handlePause();
-        }}
-      >
-        {buttonText[1]}
-      </Button>
-      <Button
-        colorScheme="black"
-        variant="outline"
-        onClick={() => {
-          handleResume();
-        }}
-      >
-        {buttonText[2]}
-      </Button>
-    </HStack>
+    <div className="action-select-button">
+      <HStack justifyContent={"center"}>
+        <Button
+          colorScheme="black"
+          variant="outline"
+          onClick={() => {
+            handleStart();
+          }}
+        >
+          {buttonText[0]}
+        </Button>
+        <Button
+          colorScheme="black"
+          variant="outline"
+          onClick={() => {
+            handlePause();
+          }}
+        >
+          {buttonText[1]}
+        </Button>
+        <Button
+          colorScheme="black"
+          variant="outline"
+          onClick={() => {
+            handleResume();
+          }}
+        >
+          {buttonText[2]}
+        </Button>
+      </HStack>
+    </div>
   );
 };
 
