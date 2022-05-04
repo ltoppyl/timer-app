@@ -97,77 +97,78 @@ const SettingTime = ({ setSettingTime }: Props) => {
   };
 
   return (
-    <Menu>
-      <MenuButton
-        className="setting-time-menu-button"
-        as={IconButton}
-        icon={<TimeIcon />}
-        variant="ghost"
-        colorScheme="ghost"
-        _focus={{ boxShadow: "none" }}
-      />
-      <MenuList>
-        <MenuItem
-          onClick={() => {
-            setSettingTime(60);
-          }}
-        >
-          1:00
-        </MenuItem>
-        <MenuItem
-          onClick={() => {
-            setSettingTime(300);
-          }}
-        >
-          5:00
-        </MenuItem>
-        <MenuItem
-          onClick={() => {
-            setSettingTime(600);
-          }}
-        >
-          10:00
-        </MenuItem>
-        <MenuItem
-          onClick={() => {
-            setSettingTime(3600);
-          }}
-        >
-          60:00
-        </MenuItem>
-        <MenuItem
-          onClick={() => {
-            setIsOpen(true);
-          }}
-        >
-          {text[0]}
-        </MenuItem>
-        <AlertDialog isOpen={isOpen} onClose={onClose} leastDestructiveRef={undefined}>
-          <AlertDialogOverlay>
-            <AlertDialogContent>
-              <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                {text[1]}
-              </AlertDialogHeader>
-              <AlertDialogBody>
-                {inputValidation === false && <Text color={"red"}>{text[4]}</Text>}
-                <HStack>
-                  <Input placeholder="day" onChange={handleChangeInputDay} />
-                  <Input placeholder="hour" onChange={handleChangeInputHour} />
-                  <Input placeholder="minute" onChange={handleChangeInputMinute} />
-                  <Input placeholder="second" onChange={handleChangeInputSecond} />
-                </HStack>
-              </AlertDialogBody>
-              <AlertDialogFooter>
-                <Button onClick={handleCancel}>{text[3]}</Button>
-                <Button colorScheme="blue" onClick={checkValidation} ml={3}>
-                  {text[2]}
-                </Button>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialogOverlay>
-        </AlertDialog>
-      </MenuList>
-    </Menu>
+    <div className="setting-time-menu-button">
+      <Menu>
+        <MenuButton
+          as={IconButton}
+          icon={<TimeIcon />}
+          variant="ghost"
+          colorScheme="ghost"
+          _focus={{ boxShadow: "none" }}
+        />
+        <MenuList>
+          <MenuItem
+            onClick={() => {
+              setSettingTime(60);
+            }}
+          >
+            1:00
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              setSettingTime(300);
+            }}
+          >
+            5:00
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              setSettingTime(600);
+            }}
+          >
+            10:00
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              setSettingTime(3600);
+            }}
+          >
+            60:00
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              setIsOpen(true);
+            }}
+          >
+            {text[0]}
+          </MenuItem>
+          <AlertDialog isOpen={isOpen} onClose={onClose} leastDestructiveRef={undefined}>
+            <AlertDialogOverlay>
+              <AlertDialogContent>
+                <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                  {text[1]}
+                </AlertDialogHeader>
+                <AlertDialogBody>
+                  {inputValidation === false && <Text color={"red"}>{text[4]}</Text>}
+                  <HStack>
+                    <Input placeholder="day" onChange={handleChangeInputDay} />
+                    <Input placeholder="hour" onChange={handleChangeInputHour} />
+                    <Input placeholder="minute" onChange={handleChangeInputMinute} />
+                    <Input placeholder="second" onChange={handleChangeInputSecond} />
+                  </HStack>
+                </AlertDialogBody>
+                <AlertDialogFooter>
+                  <Button onClick={handleCancel}>{text[3]}</Button>
+                  <Button colorScheme="blue" onClick={checkValidation} ml={3}>
+                    {text[2]}
+                  </Button>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialogOverlay>
+          </AlertDialog>
+        </MenuList>
+      </Menu>
+    </div>
   );
 };
 

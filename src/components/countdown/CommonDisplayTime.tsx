@@ -8,14 +8,14 @@ type Props = {
 
 const CommonDisplayTime = ({ units, unitsText }: Props) => {
   return (
-    <HStack>
-      <div className="display-time">
+    <div className="display-time">
+      <HStack>
         <Text fontSize={100}>{units}</Text>
         <Text alignSelf={"flex-end"} fontSize={70}>
           {unitsText}
         </Text>
-      </div>
-    </HStack>
+      </HStack>
+    </div>
   );
 };
 

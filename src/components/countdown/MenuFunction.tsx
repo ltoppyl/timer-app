@@ -49,59 +49,60 @@ const MenuFunction = () => {
   };
 
   return (
-    <Menu>
-      <MenuButton
-        className="menu-function"
-        as={IconButton}
-        icon={<HamburgerIcon />}
-        variant="ghost"
-        colorScheme="ghost"
-        _focus={{ boxShadow: "none" }}
-      />
-      <MenuList>
-        <MenuItem
-          onClick={() => {
-            setIsOpen(true);
-          }}
-        >
-          {text[0]}
-        </MenuItem>
-        <AlertDialog isOpen={isOpen} onClose={onClose} leastDestructiveRef={undefined}>
-          <AlertDialogOverlay>
-            <AlertDialogContent>
-              <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                {text[1]}
-              </AlertDialogHeader>
-              <AlertDialogBody>
-                <RadioGroup defaultValue="Japanese">
-                  <Stack spacing={5} direction="row">
-                    <Radio colorScheme="blue" value="Japanese" onChange={(e) => RadioChange(e)}>
-                      日本語
-                    </Radio>
-                    <Radio colorScheme="blue" value="English" onChange={(e) => RadioChange(e)}>
-                      English
-                    </Radio>
-                  </Stack>
-                </RadioGroup>
-              </AlertDialogBody>
-              <AlertDialogFooter>
-                <Button onClick={onClose}>{text[2]}</Button>
-                <Button
-                  ml={3}
-                  colorScheme="blue"
-                  onClick={() => {
-                    changeLanguage();
-                    onClose();
-                  }}
-                >
-                  {text[3]}
-                </Button>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialogOverlay>
-        </AlertDialog>
-      </MenuList>
-    </Menu>
+    <div className="menu-function">
+      <Menu>
+        <MenuButton
+          as={IconButton}
+          icon={<HamburgerIcon />}
+          variant="ghost"
+          colorScheme="ghost"
+          _focus={{ boxShadow: "none" }}
+        />
+        <MenuList>
+          <MenuItem
+            onClick={() => {
+              setIsOpen(true);
+            }}
+          >
+            {text[0]}
+          </MenuItem>
+          <AlertDialog isOpen={isOpen} onClose={onClose} leastDestructiveRef={undefined}>
+            <AlertDialogOverlay>
+              <AlertDialogContent>
+                <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                  {text[1]}
+                </AlertDialogHeader>
+                <AlertDialogBody>
+                  <RadioGroup defaultValue="Japanese">
+                    <Stack spacing={5} direction="row">
+                      <Radio colorScheme="blue" value="Japanese" onChange={(e) => RadioChange(e)}>
+                        日本語
+                      </Radio>
+                      <Radio colorScheme="blue" value="English" onChange={(e) => RadioChange(e)}>
+                        English
+                      </Radio>
+                    </Stack>
+                  </RadioGroup>
+                </AlertDialogBody>
+                <AlertDialogFooter>
+                  <Button onClick={onClose}>{text[2]}</Button>
+                  <Button
+                    ml={3}
+                    colorScheme="blue"
+                    onClick={() => {
+                      changeLanguage();
+                      onClose();
+                    }}
+                  >
+                    {text[3]}
+                  </Button>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialogOverlay>
+          </AlertDialog>
+        </MenuList>
+      </Menu>
+    </div>
   );
 };
 

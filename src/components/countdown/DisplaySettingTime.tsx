@@ -30,39 +30,43 @@ const DisplaySettingTime = ({ day, hour, minute, second, isRunning, upperLimitUn
 
   return (
     <HStack justifyContent={"center"}>
-      <Text className="isRunning" textAlign={"center"}>
-        【{isRunning ? displayIsRunning[1] : displayIsRunning[2]}】
-      </Text>
-      {upperLimitUnits === "day" && (
-        <Text className="setting-time" textAlign={"center"}>
-          {displayIsRunning[0]}：{day}
-          {displayUnite[0]} {hour}
-          {displayUnite[1]} {minute}
-          {displayUnite[2]} {second}
-          {displayUnite[3]}
+      <div className="isRunning">
+        <Text textAlign={"center"}>
+          【{isRunning ? displayIsRunning[1] : displayIsRunning[2]}】
         </Text>
-      )}
-      {upperLimitUnits === "hour" && (
-        <Text className="setting-time" textAlign={"center"}>
-          {displayIsRunning[0]}： {hour}
-          {displayUnite[1]} {minute}
-          {displayUnite[2]} {second}
-          {displayUnite[3]}
-        </Text>
-      )}
-      {upperLimitUnits === "minute" && (
-        <Text className="setting-time" textAlign={"center"}>
-          {displayIsRunning[0]}： {minute}
-          {displayUnite[2]} {second}
-          {displayUnite[3]}
-        </Text>
-      )}
-      {upperLimitUnits === "second" && (
-        <Text className="setting-time" textAlign={"center"}>
-          {displayIsRunning[0]}：{second}
-          {displayUnite[3]}
-        </Text>
-      )}
+      </div>
+      <div className="setting-time">
+        {upperLimitUnits === "day" && (
+          <Text textAlign={"center"}>
+            {displayIsRunning[0]}：{day}
+            {displayUnite[0]} {hour}
+            {displayUnite[1]} {minute}
+            {displayUnite[2]} {second}
+            {displayUnite[3]}
+          </Text>
+        )}
+        {upperLimitUnits === "hour" && (
+          <Text textAlign={"center"}>
+            {displayIsRunning[0]}： {hour}
+            {displayUnite[1]} {minute}
+            {displayUnite[2]} {second}
+            {displayUnite[3]}
+          </Text>
+        )}
+        {upperLimitUnits === "minute" && (
+          <Text textAlign={"center"}>
+            {displayIsRunning[0]}： {minute}
+            {displayUnite[2]} {second}
+            {displayUnite[3]}
+          </Text>
+        )}
+        {upperLimitUnits === "second" && (
+          <Text textAlign={"center"}>
+            {displayIsRunning[0]}：{second}
+            {displayUnite[3]}
+          </Text>
+        )}
+      </div>
     </HStack>
   );
 };
