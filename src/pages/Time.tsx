@@ -1,7 +1,9 @@
 import React from "react";
 
+import HomeTime from "../components/time/HomeTime";
+
 const Time = () => {
-  return <p> Time 機能は現在開発中</p>;
+  return <HomeTime />;
 };
 
 export default Time;
